@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import TextArea from "./TextArea";
 
-const Nav = () => {
+const CompanyInfo = () => {
     const [selectedImage, setSelectedImage] = useState(null);
 
     const handleImageChange = (event) => {
@@ -15,11 +15,11 @@ const Nav = () => {
     const openFileSelector = () => {
         document.getElementById('hiddenFileInput').click();
     };
+
     return (
-        <div className=" border-b">
+        <div className="border-b">
             <div className="flex justify-between items-center">
                 <div className="flex items-center justify-center">
-
                     <input id="hiddenFileInput" type="file" accept="image/*" onChange={handleImageChange} style={{ display: 'none' }} />
                     <div onClick={openFileSelector} className="bg-gray-100 p-2 w-80 h-40 flex items-center justify-center cursor-pointer border border-gray-300 rounded-md">
                         {selectedImage ? (
@@ -37,27 +37,22 @@ const Nav = () => {
 
                     <div className="flex items-center border border-yellow-500 rounded-full p-2">
                         <label htmlFor="invoiceDate" className="pr-2 text-black">Invoice date</label>
-                        <input name="invoiceDate" type="date" placeholder="mm/dd/yyyy" className="flex-grow border-none outline-none pl-2"
-                        />
+                        <input name="invoiceDate" type="date" placeholder="mm/dd/yyyy" className="flex-grow border-none outline-none pl-2" />
                     </div>
 
                     <div className="flex items-center border border-yellow-500 rounded-full p-2">
                         <label htmlFor="dueDate" className="pr-2 text-black">Due date</label>
-                        <input name="dueDate" type="date" placeholder="mm/dd/yyyy" className="flex-grow border-none outline-none pl-2"
-                        />
+                        <input name="dueDate" type="date" placeholder="mm/dd/yyyy" className="flex-grow border-none outline-none pl-2" />
                     </div>
                 </div>
-
             </div>
-                <div className="flex justify-between space-x-4 mt-4">
-                    <TextArea label="Invoice from" placeholder="Who is this invoice from?" />
-                    <TextArea label="Invoice to" placeholder="Who is this invoice to?" />
-                </div>
-
-                <hr className="my-3" />
-
+            <div className="flex justify-between space-x-4 mt-4">
+                <TextArea label="Invoice from" placeholder="Who is this invoice from?" />
+                <TextArea label="Invoice to" placeholder="Who is this invoice to?" />
+            </div>
+            <hr className="my-3" />
         </div>
     );
 };
 
-export default Nav;
+export default CompanyInfo;

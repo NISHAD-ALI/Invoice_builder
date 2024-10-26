@@ -32,11 +32,11 @@ export default function ItemTable() {
                 <thead>
                     <tr className="text-blue-900 font-semibold text-left">
                         <th className="border-b p-2">#</th>
-                        <th className="border-b p-2 text-right">Actions</th>
                         <th className="border-b p-2">Item</th>
                         <th className="border-b p-2">Quantity</th>
                         <th className="border-b p-2">Rate</th>
                         <th className="border-b p-2 text-right">Amount</th>
+                        <th className="border-b p-2 text-right"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -50,19 +50,7 @@ export default function ItemTable() {
                             }
                         >
                             <td className="p-2 text-left">{index + 1}</td>
-                            <td className="p-2 text-right relative">
-                                {/* Show delete icon only on hover */}
-                                <button
-                                    onClick={() => handleDeleteItem(index)}
-                                    className="invisible group-hover:visible transition-all duration-300 absolute right-2"
-                                >
-                                    <FontAwesomeIcon
-                                        icon={faTrash}
-                                        className="h-6 w-6 text-red-600"
-                                        title="Delete"
-                                    />
-                                </button>
-                            </td>
+
                             <td className="p-2">
                                 <input
                                     type="text"
@@ -111,6 +99,18 @@ export default function ItemTable() {
                                 />
                             </td>
                             <td className="p-2 text-right pr-4">{item.amount}</td>
+                            <td className="p-2">
+                                <button
+                                    onClick={() => handleDeleteItem(index)}
+                                    className="w-4 h-4"
+                                >
+                                    <FontAwesomeIcon
+                                        icon={faTrash}
+                                        className="h-4 w-4 text-red-500 hover:text-red-600"
+                                        title="Delete"
+                                    />
+                                </button>
+                            </td>
                         </tr>
                     ))}
                 </tbody>
