@@ -18,7 +18,7 @@ const CompanyInfo = ({ onChange }) => {
             const imageURL = URL.createObjectURL(file);
             console.log(file)
             setSelectedImage(imageURL);
-            handleInputChange('logo', file); 
+            handleInputChange('logo', imageURL); 
         }else{
             toast.error('add image')
         }
