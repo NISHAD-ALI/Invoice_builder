@@ -2,16 +2,18 @@ import React, { useEffect, useState } from 'react';
 import { PDFDownloadLink } from '@react-pdf/renderer';
 import { getInvoices } from '../Api/apis';
 import InvoiceDocument from '../Components/InvoiceDocument';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 const Previous = () => {
     const [invoices, setInvoices] = useState([]);
     const [searchQuery, setSearchQuery] = useState('');
+    const navigate = useNavigate(); // Initialize useNavigate
 
     useEffect(() => {
         const fetchInvoices = async () => {
             try {
-                const response = await getInvoices()
-                console.log(response.data.data)
+                const response = await getInvoices();
+                console.log(response.data.data);
                 setInvoices(response.data.data);
             } catch (error) {
                 console.error('Error fetching invoices:', error);
@@ -31,7 +33,15 @@ const Previous = () => {
     
     return (
         <div className="container mx-auto p-6">
-            <h2 className="text-4xl font-bold mb-4">Previous Invoices</h2>
+            <div className="flex justify-between items-center mb-4">
+                <button 
+                    onClick={() => navigate('/')} 
+                    className="bg-purple-600 text-white py-2 px-4 rounded-md"
+                >
+                   {` < Previous`}
+                </button>
+            </div>
+                <h2 className="text-4xl font-bold mb-4">Previous Invoices</h2>
             <div className="flex items-center justify-between mb-4">
                 <input
                     type="text"

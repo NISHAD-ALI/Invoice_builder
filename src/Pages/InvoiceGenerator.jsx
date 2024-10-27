@@ -4,6 +4,7 @@ import TotalInvoice from '../Components/TotalInvoice';
 import Overview from '../Components/Overview';
 import InvoicePdf from '../Components/InvoicePdf';
 import { useSelector, useDispatch } from 'react-redux';
+// dispatch from store
 import {
   addItem,
   deleteItem,
@@ -52,7 +53,7 @@ function InvoiceGenerator() {
           items={items}
           onItemChange={handleItemChange}
           onAddItem={() => dispatch(addItem())}
-          onDeleteItem={(index) => dispatch(deleteItem(index))}
+          onDeleteItem={(x) => dispatch(deleteItem(x))}
         />
         <div className="flex justify-between mt-6 space-x-4">
           <div className="w-1/2">
@@ -65,10 +66,10 @@ function InvoiceGenerator() {
               shipping={shipping}
               tax={tax}
               amountPaid={amountPaid}
-              setDiscount={(value) => dispatch(setDiscount(value))}
-              setShipping={(value) => dispatch(setShipping(value))}
-              setTax={(value) => dispatch(setTax(value))}
-              setAmountPaid={(value) => dispatch(setAmountPaid(value))}
+              setDiscount={(x) => dispatch(setDiscount(x))}
+              setShipping={(x) => dispatch(setShipping(x))}
+              setTax={(x) => dispatch(setTax(x))}
+              setAmountPaid={(x) => dispatch(setAmountPaid(x))}
             />
           </div>
         </div>
