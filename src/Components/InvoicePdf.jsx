@@ -6,7 +6,7 @@ import toast from 'react-hot-toast';
 
 const InvoicePdf = ({ items, discount, shipping, tax, amountPaid, data, balanceDue }) => {
     const [errors, setErrors] = useState({});
-    // state to hid save&download button when there is an error
+    // state to hid save&download button when there is an error   
     const [isValid, setIsValid] = useState(true); 
 
     const total = (
