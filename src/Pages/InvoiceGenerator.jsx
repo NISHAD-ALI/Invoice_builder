@@ -4,7 +4,7 @@ import TotalInvoice from '../Components/TotalInvoice';
 import Overview from '../Components/Overview';
 import InvoicePdf from '../Components/InvoicePdf';
 import { useSelector, useDispatch } from 'react-redux';
-// dispatch from store
+// dispatchd from store
 import {
   addItem,
   deleteItem,

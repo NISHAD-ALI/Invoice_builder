@@ -21,9 +21,7 @@ const ItemTable = ({ items, onItemChange, onAddItem, onDeleteItem }) => {
                 <tr
                   key={index}
                   className={
-                    index % 2 === 0
-                      ? "bg-gray-50 hover:bg-gray-300"
-                      : "bg-gray-200 hover:bg-gray-300"
+                    index % 2 === 0 ? "bg-gray-50 hover:bg-gray-300" : "bg-gray-200 hover:bg-gray-300"
                   }
                 >
                   <td className="p-2 text-left">{index + 1}</td>

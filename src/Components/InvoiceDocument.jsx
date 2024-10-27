@@ -1,7 +1,5 @@
 import React from 'react';
 import { Page, Text, View, Document, StyleSheet, Image } from '@react-pdf/renderer';
-
-// Styles for the PDF Document
 const styles = StyleSheet.create({
   page: {
     flexDirection: 'column',
@@ -92,7 +90,6 @@ const styles = StyleSheet.create({
   },
 });
 
-// Main Invoice Document Component
 const InvoiceDocument = ({ items, discount, shipping, tax, amountPaid, total, data, balanceDue }) => (
   <Document>
     <Page size="A4" style={styles.page}>
