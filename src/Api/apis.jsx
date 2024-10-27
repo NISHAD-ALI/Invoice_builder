@@ -12,9 +12,9 @@ export const sendData = async (items, discount, shipping, tax, amountPaid,balanc
 
 export const getInvoices = async() =>{
     try {
-        const data = await axiosInstance.get('/getInvoices')
-        return data
-        
+        const dataa = await axiosInstance.get('/getInvoices')
+        return dataa
+
     } catch (error) {
         console.log(error.response.data.message);
     }
