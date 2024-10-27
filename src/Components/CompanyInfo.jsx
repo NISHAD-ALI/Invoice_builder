@@ -35,64 +35,63 @@ const CompanyInfo = ({ onChange }) => {
 
     return (
         <div className="border-b">
-            <div className="flex justify-between items-center">
-                <div className="flex items-center justify-center">
-                    <input id="hiddenFileInput" type="file" accept="image/*" onChange={handleImageChange} style={{ display: 'none' }} />
-                    <div onClick={openFileSelector} className="bg-gray-100 p-2 w-80 h-40 flex items-center justify-center cursor-pointer border border-gray-300 rounded-md">
-                        {selectedImage ? (
-                            <img src={selectedImage} alt="Selected" className="h-full w-full object-cover rounded-md" />
-                        ) : (
-                            <p className="text-gray-500 font-bold">Click to add company logo</p>
-                        )}
-                    </div>
-                </div>
-                <div className="space-y-4">
-                    <div className="flex items-center border border-yellow-500 rounded-full p-2">
-                        <div className="pr-2 text-black">INVOICE</div>
-                        <input
-                            type="text"
-                            placeholder="#"
-                            className="flex-grow border-none outline-none pl-2 rounded-md"
-                            onChange={(e) => handleInputChange('invoiceNumber', e.target.value)}
-                        />
-                    </div>
-
-                    <div className="flex items-center border border-yellow-500 rounded-full p-2">
-                        <label htmlFor="invoiceDate" className="pr-2 text-black">Invoice date</label>
-                        <input
-                            name="invoiceDate"
-                            type="date"
-                            className="flex-grow border-none outline-none pl-2"
-                            onChange={(e) => handleInputChange('invoiceDate', e.target.value)}
-                        />
-                    </div>
-
-                    <div className="flex items-center border border-yellow-500 rounded-full p-2">
-                        <label htmlFor="dueDate" className="pr-2 text-black">Due date</label>
-                        <input
-                            name="dueDate"
-                            type="date"
-                            className="flex-grow border-none outline-none pl-2"
-                            onChange={(e) => handleInputChange('dueDate', e.target.value)}
-                        />
-                    </div>
-                </div>
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <div className="flex items-center justify-center mb-4 md:mb-0">
+              <input id="hiddenFileInput" type="file" accept="image/*" onChange={handleImageChange} style={{ display: 'none' }} />
+              <div onClick={openFileSelector} className="bg-gray-100 p-2 w-full max-w-xs h-40 flex items-center justify-center cursor-pointer border border-gray-300 rounded-md">
+                {selectedImage ? (
+                  <img src={selectedImage} alt="Selected" className="h-full w-full object-cover rounded-md" />
+                ) : (
+                  <p className="text-gray-500 font-bold">Click to add company logo</p>
+                )}
+              </div>
             </div>
-            <div className="flex justify-between space-x-4 mt-4">
-                <TextArea
-                    label="Invoice from"
-                    placeholder="Who is this invoice from?"
-                    onChange={(value) => handleInputChange('from', value)}
+            <div className="space-y-4 w-full md:w-auto">
+              <div className="flex items-center border border-yellow-500 rounded-full p-2">
+                <div className="pr-2 text-black">INVOICE</div>
+                <input
+                  type="text"
+                  placeholder="#"
+                  className="flex-grow border-none outline-none pl-2 rounded-md"
+                  onChange={(e) => handleInputChange('invoiceNumber', e.target.value)}
                 />
-                <TextArea
-                    label="Invoice to"
-                    placeholder="Who is this invoice to?"
-                    onChange={(value) => handleInputChange('to', value)}
+              </div>
+              <div className="flex items-center border border-yellow-500 rounded-full p-2">
+                <label htmlFor="invoiceDate" className="pr-2 text-black">Invoice date</label>
+                <input
+                  name="invoiceDate"
+                  type="date"
+                  className="flex-grow border-none outline-none pl-2"
+                  onChange={(e) => handleInputChange('invoiceDate', e.target.value)}
                 />
+              </div>
+              <div className="flex items-center border border-yellow-500 rounded-full p-2">
+                <label htmlFor="dueDate" className="pr-2 text-black">Due date</label>
+                <input
+                  name="dueDate"
+                  type="date"
+                  className="flex-grow border-none outline-none pl-2"
+                  onChange={(e) => handleInputChange('dueDate', e.target.value)}
+                />
+              </div>
             </div>
-            <hr className="my-3" />
+          </div>
+          <div className="flex flex-col md:flex-row justify-between space-x-4 mt-4">
+            <TextArea
+              label="Invoice from"
+              placeholder="Who is this invoice from?"
+              onChange={(value) => handleInputChange('from', value)}
+            />
+            <TextArea
+              label="Invoice to"
+              placeholder="Who is this invoice to?"
+              onChange={(value) => handleInputChange('to', value)}
+            />
+          </div>
+          <hr className="my-3" />
         </div>
-    );
+      );
+      
 };
 
 export default CompanyInfo;

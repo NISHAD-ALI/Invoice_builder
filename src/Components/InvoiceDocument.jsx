@@ -1,6 +1,7 @@
 import React from 'react';
 import { Page, Text, View, Document, StyleSheet, Image } from '@react-pdf/renderer';
 
+// Styles for the PDF Document
 const styles = StyleSheet.create({
   page: {
     flexDirection: 'column',
@@ -16,43 +17,51 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     marginBottom: 20,
+    borderBottomWidth: 2,
+    borderBottomColor: '#333',
+    paddingBottom: 10,
   },
   title: {
-    fontSize: 24,
+    fontSize: 28,
     fontWeight: 'bold',
-    color: '#333',
+    color: '#2C3E50',
+    textTransform: 'uppercase',
   },
   logo: {
     width: 100,
     height: 100,
     borderRadius: 10,
     marginLeft: 20,
+    border: '1px solid #ccc',
   },
   companyInfo: {
     marginBottom: 20,
     fontSize: 12,
     color: '#555',
+    backgroundColor: '#f3f4f6',
+    padding: 10,
+    borderRadius: 5,
   },
   table: {
     display: 'table',
     width: '100%',
-    border: '1px solid #ccc',
-    borderRadius: 8,
-    overflow: 'hidden',
+    borderCollapse: 'collapse',
     marginBottom: 20,
+    boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
   },
   tableHeader: {
     flexDirection: 'row',
-    backgroundColor: '#eee',
-    borderBottomWidth: 1,
+    backgroundColor: '#2980B9',
+    borderBottomWidth: 2,
     borderBottomColor: '#ccc',
+    color: '#fff',
   },
   tableColHeader: {
     width: '25%',
     padding: 10,
     textAlign: 'center',
     fontWeight: 'bold',
-    color: '#333',
+    fontSize: 14,
   },
   tableRow: {
     flexDirection: 'row',
@@ -70,18 +79,21 @@ const styles = StyleSheet.create({
     marginTop: 10,
     fontSize: 16,
     fontWeight: 'bold',
-    borderTopWidth: 1,
-    borderTopColor: '#333',
+    borderTopWidth: 2,
+    borderTopColor: '#2980B9',
     paddingTop: 10,
+    textAlign: 'right',
   },
   footer: {
     marginTop: 20,
     fontSize: 10,
     color: '#777',
+    textAlign: 'center',
   },
 });
 
-const InvoiceDocument = ({ items, discount, shipping, tax, amountPaid, total, data,balanceDue }) => (
+// Main Invoice Document Component
+const InvoiceDocument = ({ items, discount, shipping, tax, amountPaid, total, data, balanceDue }) => (
   <Document>
     <Page size="A4" style={styles.page}>
       <View style={styles.header}>
@@ -90,15 +102,15 @@ const InvoiceDocument = ({ items, discount, shipping, tax, amountPaid, total, da
       </View>
       <View style={styles.section}>
         <Text style={styles.companyInfo}>
-          {data?.companyInfo?.from}
+          <Text style={{ fontWeight: 'bold' }}>{data?.companyInfo?.from}</Text>
           {'\n'}
-          {data?.companyInfo?.to}
+          <Text style={{ fontWeight: 'bold' }}>{data?.companyInfo?.to}</Text>
           {'\n'}
-          Invoice Number: {data?.companyInfo?.invoiceNumber}
+          Invoice Number: <Text style={{ fontWeight: 'bold' }}>{data?.companyInfo?.invoiceNumber}</Text>
           {'\n'}
-          Invoice Date: {data?.companyInfo?.invoiceDate}
+          Invoice Date: <Text style={{ fontWeight: 'bold' }}>{data?.companyInfo?.invoiceDate}</Text>
           {'\n'}
-          Due Date: {data?.companyInfo?.dueDate}
+          Due Date: <Text style={{ fontWeight: 'bold' }}>{data?.companyInfo?.dueDate}</Text>
         </Text>
       </View>
       <View style={styles.table}>
@@ -112,21 +124,21 @@ const InvoiceDocument = ({ items, discount, shipping, tax, amountPaid, total, da
           <View key={index} style={styles.tableRow}>
             <Text style={styles.tableCol}>{item.description}</Text>
             <Text style={styles.tableCol}>{item.quantity}</Text>
-            <Text style={styles.tableCol}>{item.rate}</Text>
-            <Text style={styles.tableCol}>{item.amount}</Text>
+            <Text style={styles.tableCol}>${item.rate}</Text>
+            <Text style={styles.tableCol}>${item.amount}</Text>
           </View>
         ))}
       </View>
       <View style={styles.section}>
-        <Text style={styles.total}>Total: {total}</Text>
-        <Text>Discount: {discount}</Text>
-        <Text>Shipping: {shipping}</Text>
-        <Text>Tax: {tax}</Text>
-        <Text>Amount Paid: {amountPaid}</Text>
-        <Text>Balance Due: {balanceDue}</Text>
+        <Text style={styles.total}>Total: ${total}</Text>
+        <Text>Discount: ${discount}</Text>
+        <Text>Shipping: ${shipping}</Text>
+        <Text>Tax: ${tax}</Text>
+        <Text>Amount Paid: ${amountPaid}</Text>
+        <Text>Balance Due: ${balanceDue}</Text>
       </View>
       <View style={styles.footer}>
-        <Text>Terms: {data?.terms}</Text>
+        <Text>Terms & Conditions: {data?.terms}</Text>
         <Text>Footnote: {data?.footNote}</Text>
       </View>
     </Page>

@@ -38,9 +38,9 @@ function InvoiceGenerator() {
 
   return (
     <div className="min-h-screen p-5 bg-grey-100">
-      <div className="flex justify-between items-center">
-      <img src="./Screenshot 2024-10-24 152830.png" alt="finline-logo" className="w-40" />
-        <div className="flex space-x-4 items-center">
+      <div className="flex flex-col md:flex-row justify-between items-center">
+        <img src="./Screenshot 2024-10-24 152830.png" alt="finline-logo" className="w-40" />
+        <div className="flex space-x-4 items-center mt-4 md:mt-0">
           <button type="button" className="bg-blue-700 px-4 py-2 rounded-3xl text-white">
             Sign in
           </button>
@@ -55,11 +55,11 @@ function InvoiceGenerator() {
           onAddItem={() => dispatch(addItem())}
           onDeleteItem={(x) => dispatch(deleteItem(x))}
         />
-        <div className="flex justify-between mt-6 space-x-4">
-          <div className="w-1/2">
+        <div className="flex flex-col md:flex-row justify-between mt-6 space-x-4">
+          <div className="w-full md:w-1/2 mb-4 md:mb-0">
             <Overview data={data} />
           </div>
-          <div className="w-1/2">
+          <div className="w-full md:w-1/2">
             <TotalInvoice
               items={items}
               discount={discount}
@@ -73,7 +73,7 @@ function InvoiceGenerator() {
             />
           </div>
         </div>
-        <div className="flex justify-center mt-5 space-x-3">
+        <div className="flex flex-col md:flex-row justify-center mt-5 space-x-0 md:space-x-3">
           <InvoicePdf
             items={items}
             discount={discount}
@@ -84,21 +84,21 @@ function InvoiceGenerator() {
             balanceDue={balanceDue}
           />
           <button
-            className="bg-gray-300 text-gray-700 py-2 px-4 rounded-md"
+            className="bg-gray-300 text-gray-700 py-2 px-4 rounded-md mt-2 md:mt-0"
             onClick={() => dispatch(clearInvoice())}
           >
             Clear
           </button>
           <button
-            className="bg-purple-700 text-white py-2 px-4 rounded-md"
-           onClick={()=>navigate('/prev')}
+            className="bg-purple-700 text-white py-2 px-4 rounded-md mt-2 md:mt-0"
+            onClick={() => navigate('/prev')}
           >
             Show Previous Invoices
           </button>
         </div>
       </div>
     </div>
-  );
+  );  
 }
 
 export default InvoiceGenerator;

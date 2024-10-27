@@ -97,7 +97,7 @@ const InvoicePdf = ({ items, discount, shipping, tax, amountPaid, data, balanceD
                 <PDFDownloadLink
                     document={<InvoiceDocument items={items} discount={discount} shipping={shipping} tax={tax} amountPaid={amountPaid} total={total} data={data} balanceDue={balanceDue} />}
                     fileName="invoice.pdf"
-                    className="bg-purple-700 text-white py-2 px-4 rounded-md cursor-pointer"
+                    className="bg-purple-700 text-white py-2 px-4 rounded-md mt-2 md:mt-0 cursor-pointer"
                     onClick={sendDataToDB}
                 >
                     {({ loading }) => (loading ? 'Generating PDF...' : 'Save & Download PDF')}
