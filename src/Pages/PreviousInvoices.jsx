@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { PDFDownloadLink } from '@react-pdf/renderer';
 import { getInvoices } from '../Api/apis';
 import InvoiceDocument from '../Components/InvoiceDocument';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { useNavigate } from 'react-router-dom';
 
 const Previous = () => {
     const [invoices, setInvoices] = useState([]);
     const [searchQuery, setSearchQuery] = useState('');
-    const navigate = useNavigate(); // Initialize useNavigate
+    const navigate = useNavigate(); 
 
     useEffect(() => {
         const fetchInvoices = async () => {
